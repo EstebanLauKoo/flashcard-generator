@@ -1,3 +1,5 @@
+var basicStorage = require("./BasicCard.json")
+var clozeStorage = require('./ClozeCard.json')
 function BasicCard(front, back) {
         this.front = front,
         this.back = back
@@ -18,7 +20,9 @@ ClozeCard.prototype.print = function () {
 ClozeCard.prototype.partial = function () {
     var text= this.text
     console.log(text.replace(this.cloze, "..."))
+    //replaceAll requires jquery?
 }
 var textCloze = new ClozeCard("This is text", "This")
 textCloze.print()
 textCloze.partial()
+clozeStorage.push(textCloze)

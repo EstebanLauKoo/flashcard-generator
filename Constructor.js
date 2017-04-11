@@ -17,7 +17,7 @@ var BasicCard = function (front, back) {
 
     this.push = function (cardBasic) {
         fs.readFile("BasicCard.json", 'utf8', function () {
-            
+
         })
     }
 }

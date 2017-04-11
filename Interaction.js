@@ -24,12 +24,6 @@ function MainMenu() {
                 name: "Play all cloze cards"
             },
             {
-                name: 'Remove basic card!'
-            },
-            {
-                name: 'Remove cloze card!'
-            },
-            {
                 name: 'Exit'
             }
         ]
