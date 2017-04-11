@@ -1,3 +1,4 @@
+console.log("Constructor2 working")
 var basicStorage = require("./BasicCard.json")
 var clozeStorage = require('./ClozeCard.json')
 function BasicCard(front, back) {
@@ -7,8 +8,8 @@ function BasicCard(front, back) {
 BasicCard.prototype.print = function () {
     console.log("Front: " + this.front + " Back: " + this.back)
 }
-var textBasic = new BasicCard("This is front", "This is back")
-textBasic.print()
+//var textBasic = new BasicCard("Who was the first president of the United States?", "George Washington")
+//textBasic.print()
 function ClozeCard(text, cloze) {
     this.text = text,
     this.cloze = cloze
@@ -22,7 +23,7 @@ ClozeCard.prototype.partial = function () {
     console.log(text.replace(this.cloze, "..."))
     //replaceAll requires jquery?
 }
-var textCloze = new ClozeCard("This is text", "This")
-textCloze.print()
-textCloze.partial()
-clozeStorage.push(textCloze)
+//var textCloze = new ClozeCard("George Washington was the first president of the United States.", "George Washington")
+//textCloze.print()
+//textCloze.partial()
+module.exports = BasicCard

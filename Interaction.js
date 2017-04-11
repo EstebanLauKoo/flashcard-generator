@@ -49,7 +49,9 @@ function MainMenu() {
                     var back = data.back.toString()
                     console.log("Front: " + front, "Back: " + back)
                     var basic = new constructor.BasicCard(front, back)
-
+                        basic.createJSON()
+                        console.log('Card Was Added')
+                        setTimeout(MainMenu, 4000)
                 })
             }
 
