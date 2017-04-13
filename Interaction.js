@@ -3,7 +3,7 @@
  */
 var inquirer = require("inquirer")
 var constructor = require("./Constructor.js")
-
+var fs = require("fs")
 function MainMenu() {
 
     inquirer.prompt([{
@@ -18,10 +18,10 @@ function MainMenu() {
                 name: "Add Cloze Card"
             },
             {
-                name: 'Play all basic cards'
+                name: 'Play 3 basic cards'
             },
             {
-                name: "Play all cloze cards"
+                name: "Play 3 cloze cards"
             },
             {
                 name: 'Exit'
@@ -41,7 +41,7 @@ function MainMenu() {
                     {
                         type: "input",
                         name: "back",
-                        message: "what is the back of the card?"
+                        message: "What is the back of the card?"
                     }
                 ])
                     .then(function (data) {
@@ -66,7 +66,7 @@ function MainMenu() {
                     {
                         type: "input",
                         name: "cloze",
-                        message: "what is the cloze?"
+                        message: "What is the cloze?"
                     }
                 ])
                     .then(function (data) {
@@ -81,10 +81,55 @@ function MainMenu() {
                         setTimeout(MainMenu, 2000)
                     })
             }
-            else if (command === "Play all basic cards") {
+            else if (command === "Play 3 basic cards") {
 
+                fs.readFile("BasicCard.json",  function(err, obj) {
+                    var array = JSON.parse(obj)
+                    console.log(array)
+                    var random = array.cards.sort(function(stuff) {
+                        return .5 - Math.random();
+                    })
+                    random = random.slice(0, 3)
+                    var i = 0
+                    var question =
+                            {
+                                type: "input",
+                                name: "user",
+                                message: random[i].front
+                            }
+                            inquirer.prompt(question).then(function (answer) {
+                                if (random[i].back === answer.user) {
+                                    console.log("You are correct!")
+                                }
+                                else {
+                                    console.log("You are wrong. The right answer was: " + random[i].back)
+                                }
+                                i++
+                                console.log(i)
+                                inquirer.prompt(question).then(function (answer) {
+                                    if (random[i].back === answer.user) {
+                                        console.log("You are correct!")
+                                    }
+                                    else {
+                                        console.log("You are wrong. The right answer was: " + random[i].back)
+                                    }
+                                    i++
+                                    console.log(i)
+                                    inquirer.prompt(question).then(function (answer) {
+                                        if (random[i].back === answer.user) {
+                                            console.log("You are correct!")
+                                        }
+                                        else {
+                                            console.log("You are wrong. The right answer was: " + random[i].back)
+                                        }
+                                        i++
+                                    })
+                                })
+                            })
+                })
             }
-            else if (command === "Play all cloze cards") {
+
+            else if (command === "Play 3 cloze cards") {
 
             }
             else if (command === 'Exit') {

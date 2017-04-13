@@ -1,13 +1,18 @@
 {
     "cards": [
         {
-            "front": "Yes",
-            "back": "No",
+            "front": "In the children's book series, where is Paddington Bear originally from?",
+            "back": "Peru",
             "type": "Basic"
         },
         {
-            "front": "No",
-            "back": "Yes",
+            "front": "What letter must appear at the beginning of the registration number of all non-military aircraft in the U.S.?",
+            "back": "N",
+            "type": "Basic"
+        },
+        {
+            "front": "Who delivered the less famous two-hour speech that preceded Abraham Lincoln's two-minute Gettysburg Address?",
+            "back": "Edward Everret",
             "type": "Basic"
         }
     ]
