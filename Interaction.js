@@ -4,6 +4,7 @@
 var inquirer = require("inquirer")
 var constructor = require("./Constructor.js")
 var fs = require("fs")
+
 function MainMenu() {
 
     inquirer.prompt([{
@@ -90,39 +91,50 @@ function MainMenu() {
                         return .5 - Math.random();
                     })
                     random = random.slice(0, 3)
-                    var i = 0
-                    var question =
-                            {
-                                type: "input",
-                                name: "user",
-                                message: random[i].front
-                            }
-                            inquirer.prompt(question).then(function (answer) {
+                    inquirer.prompt([
+                        {
+                            type: "input",
+                            name: "user",
+                            message: random[0].front
+                        }
+                        ])
+                .then(function (answer) {
+                                var i = 0
                                 if (random[i].back === answer.user) {
                                     console.log("You are correct!")
                                 }
                                 else {
                                     console.log("You are wrong. The right answer was: " + random[i].back)
                                 }
-                                i++
                                 console.log(i)
-                                inquirer.prompt(question).then(function (answer) {
+                                inquirer.prompt([
+                                    {
+                                        type: "input",
+                                        name: "user",
+                                        message: random[1].front
+                                    }
+                                ]).then(function (answer) {
+                                    var i = 1
                                     if (random[i].back === answer.user) {
                                         console.log("You are correct!")
                                     }
                                     else {
                                         console.log("You are wrong. The right answer was: " + random[i].back)
                                     }
-                                    i++
-                                    console.log(i)
-                                    inquirer.prompt(question).then(function (answer) {
+                                    inquirer.prompt([
+                                        {
+                                            type: "input",
+                                            name: "user",
+                                            message: random[2].front
+                                        }
+                                    ]).then(function (answer) {
+                                        var i = 2
                                         if (random[i].back === answer.user) {
                                             console.log("You are correct!")
                                         }
                                         else {
                                             console.log("You are wrong. The right answer was: " + random[i].back)
                                         }
-                                        i++
                                     })
                                 })
                             })
@@ -130,7 +142,61 @@ function MainMenu() {
             }
 
             else if (command === "Play 3 cloze cards") {
-
+                fs.readFile("ClozeCard.json",  function(err, obj) {
+                    var array = JSON.parse(obj)
+                    console.log(array)
+                    var random = array.cards.sort(function(stuff) {
+                        return .5 - Math.random();
+                    })
+                    random = random.slice(0, 3)
+                    inquirer.prompt([
+                        {
+                            type: "input",
+                            name: "user",
+                            message: random[0].front.replace(random[0].back, "...")
+                        }
+                    ])
+                        .then(function (answer) {
+                            var i = 0
+                            if (random[i].back === answer.user) {
+                                console.log("You are correct!")
+                            }
+                            else {
+                                console.log("You are wrong. The right answer was: " + random[i].back)
+                            }
+                            console.log(i)
+                            inquirer.prompt([
+                                {
+                                    type: "input",
+                                    name: "user",
+                                    message: random[1].front.replace(random[1].back, "...")
+                                }
+                            ]).then(function (answer) {
+                                var i = 1
+                                if (random[i].back === answer.user) {
+                                    console.log("You are correct!")
+                                }
+                                else {
+                                    console.log("You are wrong. The right answer was: " + random[i].back)
+                                }
+                                inquirer.prompt([
+                                    {
+                                        type: "input",
+                                        name: "user",
+                                        message: random[2].front
+                                    }
+                                ]).then(function (answer) {
+                                    var i = 2
+                                    if (random[i].back === answer.user) {
+                                        console.log("You are correct!")
+                                    }
+                                    else {
+                                        console.log("You are wrong. The right answer was: " + random[i].back)
+                                    }
+                                })
+                            })
+                        })
+                })
             }
             else if (command === 'Exit') {
                 console.log("SEE YOU LATER!")

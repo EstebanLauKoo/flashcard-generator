@@ -1,8 +1,18 @@
 {
     "cards": [
         {
-            "front": "Yes",
-            "back": "No",
+            "front": "George Washington was the first president of the United States.",
+            "back": "George Washington",
+            "type": "Cloze"
+        },
+        {
+            "front": "James Madison was the second president of the United States",
+            "back": "James Madison",
+            "type": "Cloze"
+        },
+        {
+            "front": "Thomas Jefferson was the third president of the United States",
+            "back": "Thomas Jefferson",
             "type": "Cloze"
         }
     ]
