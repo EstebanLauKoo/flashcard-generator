@@ -1,1 +1,9 @@
-{}
+{
+    "cards": [
+        {
+            "front": "Yes",
+            "back": "No",
+            "type": "Cloze"
+        }
+    ]
+}

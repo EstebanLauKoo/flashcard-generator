@@ -15,10 +15,10 @@ function MainMenu() {
                 name: 'Add Basic Card'
             },
             {
-                name: "Add Cloze card"
+                name: "Add Cloze Card"
             },
             {
-                name: 'Play all basic Cards'
+                name: 'Play all basic cards'
             },
             {
                 name: "Play all cloze cards"
@@ -30,7 +30,7 @@ function MainMenu() {
     }])
         .then(function (data) {
             var command = data.command
-            //console.log(command) (works)
+            console.log(command)
             if (command === 'Add Basic Card') {
                 inquirer.prompt ([
                     {
@@ -47,12 +47,48 @@ function MainMenu() {
                     .then(function (data) {
                     var front = data.front.toString();
                     var back = data.back.toString()
+                    var type = "Basic"
                     console.log("Front: " + front, "Back: " + back)
-                    var basic = new constructor.BasicCard(front, back)
-                        basic.createJSON()
+                    var BasicInstance = new constructor(front, back, type)
+                        BasicInstance.CreateCard()
+                        console.log(BasicInstance)
                         console.log('Card Was Added')
-                        setTimeout(MainMenu, 4000)
+                        setTimeout(MainMenu, 2000)
                 })
+            }
+            else if (command === 'Add Cloze Card') {
+                inquirer.prompt([
+                    {
+                        type: "input",
+                        name: "fulltext",
+                        message: "What is the fulltext?"
+                    },
+                    {
+                        type: "input",
+                        name: "cloze",
+                        message: "what is the cloze?"
+                    }
+                ])
+                    .then(function (data) {
+                        var front = data.fulltext.toString()
+                        var back = data.cloze.toString()
+                        var type = "Cloze"
+                        console.log("Fulltext: " + front + "Cloze: " + back)
+                        var ClozeInstance = new constructor(front, back, type)
+                        ClozeInstance.CreateCard()
+                        console.log(ClozeInstance)
+                        console.log('Card Was Added')
+                        setTimeout(MainMenu, 2000)
+                    })
+            }
+            else if (command === "Play all basic cards") {
+
+            }
+            else if (command === "Play all cloze cards") {
+
+            }
+            else if (command === 'Exit') {
+                console.log("SEE YOU LATER!")
             }
 
         })

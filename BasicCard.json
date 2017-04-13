@@ -1,1 +1,14 @@
-{}
+{
+    "cards": [
+        {
+            "front": "Yes",
+            "back": "No",
+            "type": "Basic"
+        },
+        {
+            "front": "No",
+            "back": "Yes",
+            "type": "Basic"
+        }
+    ]
+}
